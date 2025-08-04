@@ -1,27 +1,34 @@
-import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import { Outlet } from "react-router-dom";
+import { Box } from "@mui/material";
+import Navbar from "./components/Navbar";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
+    <>
+      <Navbar />
 
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <Box
+        sx={{
+          position: "relative",
+          minHeight: "calc(100vh - 68.5px)",
+          "&::after": {
+            content: "''",
+            position: "absolute",
+            width: "100%",
+            height: "100%",
+            inset: 0,
+            backgroundColor: "#fafafa",
+            backgroundImage:
+              "repeating-linear-gradient(45deg, #ccc 0, #ccc 1px, transparent 1px, transparent 20px)",
+            backgroundSize: "25px 25px",
+            zIndex: -1,
+          },
+        }}
+      >
+        <Outlet />
+      </Box>
+    </>
   );
-}
+};
 
 export default App;
